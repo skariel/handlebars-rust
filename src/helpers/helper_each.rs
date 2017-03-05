@@ -1,8 +1,5 @@
 use std::collections::BTreeMap;
 
-#[cfg(all(feature = "rustc_ser_type", not(feature = "serde_type")))]
-use serialize::json::Json;
-#[cfg(feature = "serde_type")]
 use serde_json::value::Value as Json;
 
 use helpers::HelperDef;
@@ -136,9 +133,8 @@ mod test {
     use context::to_json;
 
     use std::collections::BTreeMap;
-
-    #[cfg(all(feature = "rustc_ser_type", not(feature = "serde_type")))]
-    use serialize::json::Json;
+    use std::str::FromStr;
+    use serde_json::value::Value as Json;
 
     #[test]
     fn test_each() {
@@ -160,7 +156,6 @@ mod test {
     }
 
     #[test]
-    #[cfg(all(feature = "rustc_ser_type", not(feature = "serde_type")))]
     fn test_each_with_parent() {
 
         let json_str = r#"{"a":{"a":99,"c":[{"d":100},{"d":200}]}}"#;
@@ -181,7 +176,6 @@ mod test {
     }
 
     #[test]
-    #[cfg(all(feature = "rustc_ser_type", not(feature = "serde_type")))]
     fn test_nested_each_with_parent() {
 
         let json_str = r#"{"a": [{"b": [{"d": 100}], "c": 200}]}"#;
@@ -195,7 +189,6 @@ mod test {
     }
 
     #[test]
-    #[cfg(all(feature = "rustc_ser_type", not(feature = "serde_type")))]
     fn test_nested_each() {
 
         let json_str = r#"{"a": [{"b": true}], "b": [[1, 2, 3],[4, 5]]}"#;
