@@ -17,7 +17,6 @@ use registry::Registry;
 use context::{Context, JsonRender};
 use helpers::HelperDef;
 use support::str::StringWriter;
-#[cfg(not(feature="partial_legacy"))]
 use partial;
 
 /// Error when rendering data on template.
@@ -698,7 +697,6 @@ impl Evaluable for TemplateElement {
                     }
                 })
             }
-            #[cfg(not(feature="partial_legacy"))]
             PartialExpression(ref dt) | PartialBlock(ref dt) => {
                 Directive::from_template(dt, registry, rc)
                     .and_then(|di| partial::expand_partial(&di, registry, rc))

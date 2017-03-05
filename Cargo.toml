@@ -36,7 +36,6 @@ rustc_ser_type = ["rustc-serialize"]
 serde_type = ["serde_json"]
 serde_test = ["serde_type", "serde", "serde_derive"]
 partial4 = []
-partial_legacy = []
 
 [dev-dependencies]
 env_logger = "^0.4.0"

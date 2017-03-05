@@ -904,7 +904,6 @@ fn test_block_param() {
 }
 
 #[test]
-#[cfg(not(feature="partial_legacy"))]
 fn test_directive() {
     match Template::compile("hello {{* ssh}} world") {
         Err(e) => panic!("{}", e),
